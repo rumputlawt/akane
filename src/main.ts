@@ -36,7 +36,7 @@ async function serveHttp(conn: Deno.Conn): Promise<void> {
       )
     } else {
       const interaction = JSON.parse(body) as APIInteraction;
-      for await (const dir of Deno.readDir(Deno.cwd() + "/src/events")) {
+      for await (const dir of Deno.readDir(Deno.cwd() + "/events")) {
         const event: Event = await import(`./events/${dir.name}`);
         if (event.type == interaction.type) await event.execute({ requestEvent, interaction });
       }
