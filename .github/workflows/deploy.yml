@@ -19,12 +19,10 @@ jobs:
           deno-version: vx.x.x
 
       - name: Build step
-        run: deno check ${{ vars.ROOT }}/${{ vars.ENTRYPOINT }}
+        run: deno check ${{ vars.ENTRYPOINT }}
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: ${{ vars.PROJECT }}
           entrypoint: ${{ vars.ENTRYPOINT }}
-          root: ${{ vars.ROOT }}
-          import-map: ${{ vars.IMPORT_MAPS }}
