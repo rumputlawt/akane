@@ -1,6 +1,0 @@
-{
-  "imports": {
-    "$http": "https://deno.land/std@0.193.0/http/mod.ts",
-    "discord_api_types": "https://deno.land/x/discord_api_types@0.37.48/v10.ts"
-  }
-}
