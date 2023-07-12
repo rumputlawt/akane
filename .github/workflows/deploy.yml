@@ -26,3 +26,4 @@ jobs:
         with:
           project: ${{ vars.PROJECT }}
           entrypoint: ${{ vars.ENTRYPOINT }}
+          root: ${{ vars.ROOT }}
