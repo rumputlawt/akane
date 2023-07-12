@@ -19,7 +19,7 @@ jobs:
           deno-version: vx.x.x
 
       - name: Build step
-        run: deno check ${{ vars.ENTRYPOINT }}
+        run: deno check --config=src/deno.json ${{ vars.ENTRYPOINT }}
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
