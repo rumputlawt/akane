@@ -27,3 +27,4 @@ jobs:
           project: ${{ vars.PROJECT }}
           entrypoint: ${{ vars.ENTRYPOINT }}
           root: ${{ vars.ROOT }}
+          import-maps: ${{ vars.IMPORT_MAPS }}
