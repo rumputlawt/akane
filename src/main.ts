@@ -5,17 +5,20 @@ import {
   APIInteraction
 } from "discord_api_types";
 import {
-  Event
+  Event,
+  Manifest
 } from "./types.ts";
+
+import manifest from "./manifest.ts";
 import nacl from "https://esm.sh/tweetnacl@1.0.3";
 
 const server = Deno.listen({ port: 80 });
 
 for await (const conn of server) {
-  serveHttp(conn);
+  serveHttp(conn, manifest);
 }
 
-async function serveHttp(conn: Deno.Conn): Promise<void> {
+async function serveHttp(conn: Deno.Conn, manifest: Manifest): Promise<void> {
   const httpConn = Deno.serveHttp(conn);
 
   for await (const requestEvent of httpConn) {
@@ -36,10 +39,8 @@ async function serveHttp(conn: Deno.Conn): Promise<void> {
       )
     } else {
       const interaction = JSON.parse(body) as APIInteraction;
-      for await (const dir of Deno.readDir(Deno.cwd() + "/events")) {
-        const event: Event = await import(`./events/${dir.name}`);
-        if (event.type == interaction.type) await event.execute({ requestEvent, interaction });
-      }
+      const event = manifest.events.find<Event>(ctx => ctx.type == interaction.type);
+      if (event) await event.execute({ requestEvent, interaction });
     }
   }
 }
