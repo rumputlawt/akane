@@ -17,3 +17,7 @@ export interface Event {
   type: InteractionType;
   execute: (data: ExecuteOptions) => Promise<void>;
 }
+
+export interface Manifest {
+  events: Event[]
+}
