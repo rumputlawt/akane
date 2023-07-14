@@ -37,7 +37,7 @@ async function serveHttp(conn: Deno.Conn, manifest: Manifest): Promise<void> {
         new Response("Invalid Request.", { status: Status.Unauthorized })
       )
     } else {
-      const interaction = JSON.parse(body) as APIInteraction;
+      const interaction: APIInteraction = JSON.parse(body);
       const event = manifest.events.find(ctx => ctx.type == interaction.type)!;
       if (event) await event.execute({ requestEvent, interaction });
     }
