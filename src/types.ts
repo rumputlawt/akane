@@ -1,11 +1,14 @@
 import {
-  APIApplicationCommandInteraction,
-  APIInteraction,
-  InteractionType
+  APIPingInteraction,
+  APIInteraction
 } from "discord_api_types";
 
 export interface ExecuteOptions {
   requestEvent: Deno.RequestEvent;
+}
+
+export interface PingExecuteOptions extends ExecuteOptions {
+  interaction: APIPingInteraction;
 }
 
 export interface Event<T extends InteractionType> {
@@ -13,7 +16,7 @@ export interface Event<T extends InteractionType> {
 }
 
 export interface EventPing extends Event<InteractionType.Ping> {
-  execute: (data: ExecuteOptions & { interaction: APIApplicationCommandInteraction }) => Promise<void>;
+  execute: (data: PingExecuteOptions) => Promise<void>;
 }
 
 export interface Manifest {
