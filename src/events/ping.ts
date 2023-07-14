@@ -1,5 +1,5 @@
-import {
-  ExecuteOptions
+import type {
+  PingExecuteOptions
 } from "../types.ts";
 import {
   APIInteractionResponsePong,
@@ -9,7 +9,7 @@ import {
 
 export const type = InteractionType.Ping;
 
-export async function execute (data: ExecuteOptions): Promise<void> {
+export async function execute (data: PingExecuteOptions): Promise<void> {
   const pong: APIInteractionResponsePong = {
     type: InteractionResponseType.Pong
   }
