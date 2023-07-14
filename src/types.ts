@@ -1,6 +1,7 @@
 import {
   APIPingInteraction,
-  APIInteraction
+  APIInteraction,
+  InteractionType
 } from "discord_api_types";
 
 export interface ExecuteOptions {
