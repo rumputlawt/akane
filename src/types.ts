@@ -6,18 +6,16 @@ import {
 
 export interface ExecuteOptions {
   requestEvent: Deno.RequestEvent;
-  interaction: APIInteraction;
 }
 
-export interface CommandExecuteOptions extends Omit<ExecuteOptions, "interaction"> {
-  interaction: APIApplicationCommandInteraction
+export interface Event<T extends InteractionType> {
+  type: T;
 }
 
-export interface Event {
-  type: InteractionType;
-  execute: (data: ExecuteOptions) => Promise<void>;
+export interface EventPing extends Event<InteractionType.Ping> {
+  execute: (data: ExecuteOptions & { interaction: APIApplicationCommandInteraction }) => Promise<void>;
 }
 
 export interface Manifest {
-  events: Event[]
+  events: (EventPing)[]
 }
