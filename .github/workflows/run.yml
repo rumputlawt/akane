@@ -1,0 +1,27 @@
+name: Run
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        type: string
+        required: true
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+
+      - name: Run deno
+        run: ${{ inputs.command }}
