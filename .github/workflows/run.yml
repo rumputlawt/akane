@@ -5,6 +5,9 @@ on:
       command:
         type: string
         required: true
+        
+env:
+  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
 jobs:
   run:
