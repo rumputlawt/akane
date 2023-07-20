@@ -8,7 +8,7 @@ import type {
   Manifest
 } from "./types.ts";
 
-import manifest from "./manifest.ts";
+import * as manifest from "./manifest.ts";
 import nacl from "https://esm.sh/tweetnacl@1.0.3";
 
 const server = Deno.listen({ port: 80 });
