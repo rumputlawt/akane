@@ -1,6 +1,6 @@
 import type {
-  Event
+  EventPing
 } from "./types.ts";
 import * as eventPing from "./events/ping.ts";
 
-export const events: Event[] = [eventPing];
+export const events: (EventPing)[] = [eventPing];
