@@ -1,5 +1,6 @@
 import {
   ApplicationCommandType,
+  type APIApplicationCommandInteraction,
   type APIPingInteraction,
   type APIInteraction,
   type APIChatInputApplicationCommandInteraction,
