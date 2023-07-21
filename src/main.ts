@@ -7,6 +7,8 @@ import type {
   APIPingInteraction
 } from "discord_api_types";
 import type {
+  EventApplicationCommand,
+  EventPing,
   Manifest
 } from "./types.ts";
 
@@ -40,7 +42,7 @@ async function serveHttp(conn: Deno.Conn, manifest: Manifest): Promise<void> {
       )
     } else {
       const interaction: APIApplicationCommandInteraction | APIPingInteraction = JSON.parse(body) as APIInteraction;
-      const event = manifest.events.find(ctx => ctx.type == interaction.type)!;
+      const event: EventApplicationCommand | EventPing = manifest.events.find(ctx => ctx.type == interaction.type)!;
       if (event) await event.execute(requestEvent, interaction);
     }
   }
