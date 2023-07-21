@@ -1,7 +1,5 @@
-import type {
-  PingExecuteOptions
-} from "../types.ts";
 import {
+  type APIPingInteraction,
   APIInteractionResponsePong,
   InteractionResponseType,
   InteractionType
@@ -9,12 +7,12 @@ import {
 
 export const type = InteractionType.Ping;
 
-export async function execute (data: PingExecuteOptions): Promise<void> {
+export async function execute (requestEvent: Deno.RequestEvent, interaction: APIPingInteraction): Promise<void> {
   const pong: APIInteractionResponsePong = {
     type: InteractionResponseType.Pong
   }
 
-  data.requestEvent.respondWith(
+  requestEvent.respondWith(
     new Response(JSON.stringify(pong))
   );
 }
