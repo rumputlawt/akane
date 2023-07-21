@@ -36,7 +36,7 @@ async function serveHttp(conn: Deno.Conn, manifest: Manifest): Promise<void> {
     } else {
       const interaction = JSON.parse(body);
       const event = manifest.events.find(ctx => ctx.type == interaction.type)!;
-      if (event) await event.execute(requestEvent, interaction);
+      if (event) await event.execute(requestEvent, interaction, manifest);
     }
   }
 }
