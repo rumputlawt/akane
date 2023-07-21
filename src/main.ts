@@ -1,6 +1,3 @@
-))
-  )
-}
 import {
   Status
 } from "$http";
