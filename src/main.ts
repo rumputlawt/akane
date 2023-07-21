@@ -2,13 +2,6 @@ import {
   Status
 } from "$http";
 import type {
-  APIApplicationCommandInteraction,
-  APIInteraction,
-  APIPingInteraction
-} from "discord_api_types";
-import type {
-  EventApplicationCommand,
-  EventPing,
   Manifest
 } from "./types.ts";
 
