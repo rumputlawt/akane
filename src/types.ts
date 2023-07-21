@@ -28,7 +28,7 @@ export interface EventPing
   }
 export interface EventApplicationCommand
   extends Event<InteractionType.ApplicationCommand> {
-    execute: (requestEvent: Deno.RequestEvent, interaction: APIApplicationCommandInteraction) => Promise<void>;
+    execute: (manifest: Manifest, requestEvent: Deno.RequestEvent, interaction: APIApplicationCommandInteraction) => Promise<void>;
   }
 
 export interface Manifest {
