@@ -6,15 +6,17 @@ import {
   type APIChatInputApplicationCommandInteraction,
   type APIMessageApplicationCommandInteraction,
   type APIUserApplicationCommandInteraction,
-  InteractionType
+  InteractionType,
+  type RESTPostAPIApplicationCommandsJSONBody,
+  type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from "discord_api_types";
 
-interface Command<T extends ApplicationCommandType> {
-  type: T
+interface Command<D extends RESTPostAPIApplicationCommandsJSONBody> {
+  data: D
 }
 
 export interface ChatInputCommand
-  extends Command<ApplicationCommandType.ChatInput> {
+  extends Command<RESTPostAPIChatInputApplicationCommandsJSONBody> {
     execute: (requestEvent: Deno.RequestEvent, interaction: APIChatInputApplicationCommandInteraction) => Promise<void>;
   }
 
