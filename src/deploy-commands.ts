@@ -9,9 +9,9 @@ import {
 
 const commands: RESTPutAPIApplicationCommandsJSONBody = manifestCommands.map(ctx => ctx.data);
 
-const deploy = await fetch(RouteBases.api + Routes.applicationCommands(Deno.env.get("DISCORD_ID")), {
+const deploy = await fetch(RouteBases.api + Routes.applicationCommands(Deno.env.get("DISCORD_ID")!), {
   headers: new Headers(
-    { "authorization": Deno.env.get("DISCORD_TOKEN") }
+    { "authorization": Deno.env.get("DISCORD_TOKEN")! }
   ),
   body: JSON.stringify(commands)
 })
