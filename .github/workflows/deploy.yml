@@ -1,7 +1,8 @@
 name: Deploy
 on:
   push:
-    branches: [production]
+    branches:
+      - production
     paths:
       - 'src/**'
    workflow_dispatch:
