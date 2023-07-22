@@ -11,10 +11,10 @@ const commands: RESTPutAPIApplicationCommandsJSONBody = manifestCommands.map(ctx
 
 const deploy = await fetch(RouteBases.api + Routes.applicationCommands(Deno.env.get("DISCORD_ID")!), {
   method: "PUT",
-  headers: new Headers(
-    { "authorization": Deno.env.get("DISCORD_TOKEN")! },
-    { "content-type": "application/json" }
-  ),
+  headers: new Headers({
+    "authorization": Deno.env.get("DISCORD_TOKEN")!,
+    "content-type": "application/json"
+  }),
   body: JSON.stringify(commands)
 })
   .then(res => res.json());
