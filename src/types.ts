@@ -1,25 +1,37 @@
 import {
-  APIPingInteraction,
-  APIInteraction,
-  InteractionType
+  ApplicationCommandType,
+  type APIApplicationCommandInteraction,
+  type APIPingInteraction,
+  type APIInteraction,
+  type APIChatInputApplicationCommandInteraction,
+  InteractionType,
+  type RESTPostAPIApplicationCommandsJSONBody,
+  type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from "discord_api_types";
 
-export interface ExecuteOptions {
-  requestEvent: Deno.RequestEvent;
+interface Command<D extends RESTPostAPIApplicationCommandsJSONBody> {
+  data: D
 }
 
-export interface PingExecuteOptions extends ExecuteOptions {
-  interaction: APIPingInteraction;
-}
+export interface ChatInputCommand
+  extends Command<RESTPostAPIChatInputApplicationCommandsJSONBody> {
+    execute: (requestEvent: Deno.RequestEvent, interaction: APIChatInputApplicationCommandInteraction) => Promise<void>;
+  }
 
-export interface Event<T extends InteractionType> {
+interface Event<T extends InteractionType> {
   type: T;
 }
 
-export interface EventPing extends Event<InteractionType.Ping> {
-  execute: (data: PingExecuteOptions) => Promise<void>;
-}
+export interface PingEvent
+  extends Event<InteractionType.Ping> {
+    execute: (requestEvent: Deno.RequestEvent, interaction: APIPingInteraction) => Promise<void>;
+  }
+export interface ApplicationCommandEvent
+  extends Event<InteractionType.ApplicationCommand> {
+    execute: (requestEvent: Deno.RequestEvent, interaction: APIApplicationCommandInteraction, manifest: Manifest) => Promise<void>;
+  }
 
 export interface Manifest {
-  events: (EventPing)[]
+  commands: (ChatInputCommand)[];
+  events: (ApplicationCommandEvent | PingEvent)[]
 }

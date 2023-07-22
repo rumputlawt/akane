@@ -7,6 +7,7 @@ on:
         required: true
         
 env:
+  DISCORD_ID: ${{ secrets.DISCORD_ID }}
   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
 jobs:

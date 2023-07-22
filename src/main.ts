@@ -2,9 +2,6 @@ import {
   Status
 } from "$http";
 import type {
-  APIPingInteraction
-} from "discord_api_types";
-import type {
   Manifest
 } from "./types.ts";
 
@@ -37,9 +34,9 @@ async function serveHttp(conn: Deno.Conn, manifest: Manifest): Promise<void> {
         new Response("Invalid Request.", { status: Status.Unauthorized })
       )
     } else {
-      const interaction: APIPingInteraction = JSON.parse(body);
+      const interaction = JSON.parse(body);
       const event = manifest.events.find(ctx => ctx.type == interaction.type)!;
-      if (event) await event.execute({ requestEvent, interaction });
+      if (event) await event.execute(requestEvent, interaction, manifest);
     }
   }
 }
