@@ -5,7 +5,7 @@ import {
 } from "discord_api_types";
 import { 
   commands as manifestCommands
-} from "./manifest";
+} from "./manifest.ts";
 
 const commands: RESTPutAPIApplicationCommandsJSONBody = manifestCommands.map(ctx => ctx.data);
 
