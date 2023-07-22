@@ -18,4 +18,4 @@ const deploy = await fetch(RouteBases.api + Routes.applicationCommands(Deno.env.
   body: JSON.stringify(commands)
 })
   .then(res => res.json());
-console.log(deploy);
+console.log(JSON.stringify(deploy, null, "  "));
