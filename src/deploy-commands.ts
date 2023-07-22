@@ -1,6 +1,6 @@
 import {
   RouteBases,
-  Routes
+  Routes,
   type RESTPutAPIApplicationCommandsJSONBody
 } from "discord_api_types";
 import { 
