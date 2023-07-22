@@ -24,11 +24,11 @@ interface Event<T extends InteractionType> {
   type: T;
 }
 
-export interface EventPing
+export interface PingEvent
   extends Event<InteractionType.Ping> {
     execute: (requestEvent: Deno.RequestEvent, interaction: APIPingInteraction) => Promise<void>;
   }
-export interface EventApplicationCommand
+export interface ApplicationCommandEvent
   extends Event<InteractionType.ApplicationCommand> {
     execute: (requestEvent: Deno.RequestEvent, interaction: APIApplicationCommandInteraction, manifest: Manifest) => Promise<void>;
   }
