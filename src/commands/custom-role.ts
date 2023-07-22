@@ -9,6 +9,7 @@ export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
   name: "custom-role",
   description: "🐑 ゛Atur custom role mu yh dek",
   type: ApplicationCommandType.ChatInput,
+  dm_permission: false,
   options: [
     {
       name: "create",
