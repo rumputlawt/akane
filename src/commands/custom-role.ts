@@ -1,5 +1,5 @@
 import {
-  type APIChatInputCommandInteraction,
+  type APIChatInputApplicationCommandInteraction,
   ApplicationCommandType,
   ApplicationCommandOptionType,
   type RESTPostAPIChatInputApplicationCommandsJSONBody
@@ -38,6 +38,6 @@ export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
   ]
 }
 
-export async function execute (requestEvent: Deno.RequestEvent, interaction: APIChatInputCommandInteraction): Promise<void> {
+export async function execute (requestEvent: Deno.RequestEvent, interaction: APIChatInputApplicationCommandInteraction): Promise<void> {
   
 }
