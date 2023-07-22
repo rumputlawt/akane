@@ -34,5 +34,6 @@ export interface ApplicationCommandEvent
   }
 
 export interface Manifest {
-  events: (EventApplicationCommand | EventPing)[]
+  commands: (ChatInputCommand)[];
+  events: (ApplicationCommandEvent | PingEvent)[]
 }
