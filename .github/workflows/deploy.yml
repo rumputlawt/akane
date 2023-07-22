@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - production
-   workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
