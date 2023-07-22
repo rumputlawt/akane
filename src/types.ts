@@ -4,8 +4,6 @@ import {
   type APIPingInteraction,
   type APIInteraction,
   type APIChatInputApplicationCommandInteraction,
-  type APIMessageApplicationCommandInteraction,
-  type APIUserApplicationCommandInteraction,
   InteractionType,
   type RESTPostAPIApplicationCommandsJSONBody,
   type RESTPostAPIChatInputApplicationCommandsJSONBody
